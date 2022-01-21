@@ -17,5 +17,15 @@ export class IssuesService {
   createIssue(issue: Issue) {
     issue.issueNo = this.issues.length + 1;
     this.issues.push(issue);
-   }
+  }
+
+  completeIssue(issue: Issue) {
+    const selectedIssue: Issue = {
+      ...issue,
+      completed: new Date()
+    };
+    const index = this.issues.findIndex(i => i ===
+      issue);
+    this.issues[index] = selectedIssue;
+  }
 }
